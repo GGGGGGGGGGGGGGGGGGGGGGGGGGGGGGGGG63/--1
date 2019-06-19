@@ -7,9 +7,16 @@
 //
 
 #include <iostream>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+#include <fstream>
+using namespace std;
+int main() {
+    ofstream gg("/Users/s20181105880/Desktop/歌手.txt");
+    if(gg.is_open())
+    {
+        gg<<"This is a line.\n";
+        gg <<"This is another line.\n";
+        gg.close();
+    }
+    
     return 0;
 }
