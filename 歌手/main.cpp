@@ -15,8 +15,17 @@ int main() {
     ifstream GG("/Users/s20181105880/Desktop/歌手的副本.txt");
     if(GG.is_open())
     {
+        int i;
+        int a[7];
         cout<<"file is ok"<<endl;
-        GG>>a>>b;
+        for(i=0;i<7;i++)
+        {
+            GG>>a[i];
+        }
+        for(i=0;i<7;i++)
+        {
+            cout<<a[i]<<endl;
+        }
         cout<<a<<"   "<<b<<endl;
         GG.close();
     }
@@ -26,6 +35,7 @@ int main() {
         cout<<"c="<<a+b<<endl;
         gg.close();
     }
+    
     
     return 0;
 }
