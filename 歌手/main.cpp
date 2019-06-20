@@ -10,10 +10,10 @@
 #include <fstream>
 #include <string>
 using namespace std;
-class cp{
+class Referee{
 public:
-cp(string name,int score):name(name),score(score){}
-    friend ostream& operator << (ostream&,const cp&);
+Referee(string name,int score):name(name),score(score){}
+    friend ostream& operator << (ostream&,const Referee&);
 private:
     string name;
     int score;
@@ -23,7 +23,7 @@ private:
     
 }*/
 int main() {
-    cp stu[]={cp("1",90),cp("2",90),cp("3",90),cp("4",90),cp("5",90),cp("6",90),cp("7",90)};
+    Referee stu[]={Referee("1",90),Referee("2",90),Referee("3",90),Referee("4",90),Referee("5",90),Referee("6",90),Referee("7",90)};
     ofstream out("/Users/s20181105880/Desktop/裁判.txt");
     //out<<stu[0]<<stu[1]<<stu[2];
     out.close();
