@@ -5,52 +5,40 @@
 //  Created by s20181105880 on 2019/6/19.
 //  Copyright © 2019 。. All rights reserved.
 //
-
+#include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 using namespace std;
-class Referee{
-public:
-Referee(string name,int score):name(name),score(score){}
-    friend ostream& operator << (ostream&,const Referee&);
-private:
+struct Referee{
     string name;
-    int score;
-};
-/*ostream& operator << (ostream&,const cp& s){
-    os<<s.name<<' '<<s.score<<endl;
-    
-}*/
-int main() {
-    Referee stu[]={Referee("1",90),Referee("2",90),Referee("3",90),Referee("4",90),Referee("5",90),Referee("6",90),Referee("7",90)};
-    ofstream out("/Users/s20181105880/Desktop/裁判.txt");
-    //out<<stu[0]<<stu[1]<<stu[2];
-    out.close();
-    ofstream gg("/Users/s20181105880/Desktop/歌手.txt");//
-    ifstream GG("/Users/s20181105880/Desktop/歌手的副本.txt");//
-    if(out.is_open()){
-        out<<stu[0]<<stu[1]<<stu[2];
-        out.close();    }
-    if(GG.is_open())//写入文件
+    double grade[6];
+} referee[7];
+struct Student{
+    string Number;
+    string name;
+    string college;
+    string sex;
+    double grades[7];
+    double sum=0;
+}student[6];
+
+int main()
+{
+    int i=0;
+    ifstream Refereein("E:\裁判.txt");
+    ifstream Studentin("E:\参赛者.txt");
+    ofstream allout("E:\输出.xls");
+    if(Refereein.is_open())//裁判输入
     {
-        int i;
-        int a[7];
-        for(i=0;i<7;i++)
+        while(!Refereein.eof() && i<7)
         {
-            GG>>a[i]; //7个裁判分数
+            Refereein>>referee[i].name>>referee[i].grade[0]>>referee[i].grade[1]>>referee[i].grade[2]>>referee[i].grade[3]>>referee[i].grade[4]>>referee[i].grade[5];
+            i++;
         }
-        /*for(i=0;i<7;i++)
-        {
-            cout<<a[i]<<endl;//输出7个分数
-        }*/
-        GG.close();
+        Refereein.close();
     }
-    if (gg.is_open())//读的文件
-    {
-               gg.close();
-    }
-    
-    
+ 
     return 0;
 }
