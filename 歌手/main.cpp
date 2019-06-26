@@ -39,6 +39,9 @@ int main()
         }
         Refereein.close();
     }
- 
-    return 0;
+    if (Studentin.is_open())//参赛者输入
+    {
+       
+        Studentin.close();
+    }     return 0;
 }
