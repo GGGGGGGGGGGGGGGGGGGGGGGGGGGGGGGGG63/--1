@@ -79,7 +79,15 @@ int main()
         }
             student[i].sum=student[i].sum/5;
     }
-
+    for(int i=0;i<6;i++)
+    {
+        cout<<student[i].Number;
+        cout<<" "<<student[i].name;
+        cout<<" "<<student[i].sex;
+        cout<<" "<<student[i].college;
+        cout<<" "<<student[i].sum;
+        cout<<endl;
+    }
     
     return 0;
 }
