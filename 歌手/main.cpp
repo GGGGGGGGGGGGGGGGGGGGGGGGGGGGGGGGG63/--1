@@ -63,22 +63,33 @@ int main()
             student[i].grades[j]=referee[j].grade[i];
         }
         for(int k=0;k<6;k++)
-        {
-            double min=student[i].grades[0];
-            if(student[i].grades[k]>student[i].grades[k+1])
-            {
-                min=student[i].grades[k+1];
-                student[i].grades[k+1]=student[i].grades[k];
-                student[i].grades[k]=min;
-            }
-        }
+         {
+         double min=student[i].grades[0];
+         if(student[i].grades[k]>student[i].grades[k+1])
+         {
+         min=student[i].grades[k+1];
+         student[i].grades[k+1]=student[i].grades[k];
+         student[i].grades[k]=min;
+         }
+         }
+        //sort(student[i].grades,student[i].grades+7);
         
         for(int k=1;k<6;k++)
         {
             student[i].sum+=student[i].grades[k];
         }
-            student[i].sum=student[i].sum/5;
+        student[i].sum=student[i].sum/5;
     }
+    for(int i=0;i<6;i++)
+    {
+        allout<<student[i].Number;
+        allout<<" "<<student[i].name;
+        allout<<" "<<student[i].sex;
+        allout<<" "<<student[i].college;
+        allout<<" "<<student[i].sum;
+        allout<<endl;
+    }
+    
     for(int i=0;i<6;i++)
     {
         cout<<student[i].Number;
