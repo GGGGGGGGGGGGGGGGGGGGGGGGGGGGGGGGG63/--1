@@ -23,6 +23,18 @@ struct Student{
     double grades[7];
     double sum=0;
 }student[6];
+bool judge(Student &object1,Student &object2)
+{
+    if(object1.sum>object2.sum)
+    {
+        
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 int main()
 {   int i=0;
     ifstream Refereein("/Users/s20181105880/Desktop/裁判.txt"  );
@@ -80,6 +92,8 @@ int main()
         }
         student[i].sum=student[i].sum/5;
     }
+    sort(student,student+6,judge);
+    
     for(int i=0;i<6;i++)
     {
         allout<<student[i].Number;
