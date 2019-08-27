@@ -94,6 +94,15 @@ int main()
         Outputgrade<<" "<<student[i].Sum;
         Outputgrade<<endl;
     }
-
+    for(int i=0;i<STUDENTNUMBER;i++)
+    {
+        cout<<i+1<<" ";
+        cout<<student[i].Number;
+        cout<<" "<<student[i].Name;
+        cout<<" "<<student[i].Sex;
+        cout<<" "<<student[i].College;
+        cout<<" "<<student[i].Sum;
+        cout<<endl;
+    }
     return 0;
 }
