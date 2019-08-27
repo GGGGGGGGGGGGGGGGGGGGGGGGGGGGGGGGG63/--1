@@ -34,8 +34,8 @@ bool judge(Student &Object1,Student &Object2)
 int main()
 {   int i=0;
     double Midnumber=0;
-    ifstream Refereein("/Users/s20181105880/Desktop/裁判.txt");
-    ifstream Studentin("/Users/s20181105880/Desktop/学生.txt");
+    ifstream Refereein("/Users/s20181105880/Desktop/Refereein.txt");
+    ifstream Studentin("/Users/s20181105880/Desktop/Studentin.txt");
     ofstream Outputgrade("/Users/s20181105880/Desktop/输出.xls");
     if(Refereein.is_open())//裁判输入
     {
@@ -86,6 +86,7 @@ int main()
     sort(student,student+STUDENTNUMBER,judge);
     for(int i=0;i<STUDENTNUMBER;i++)
     {
+        Outputgrade<<i+1<<" ";
         Outputgrade<<student[i].Number;
         Outputgrade<<" "<<student[i].Name;
         Outputgrade<<" "<<student[i].Sex;
@@ -93,14 +94,6 @@ int main()
         Outputgrade<<" "<<student[i].Sum;
         Outputgrade<<endl;
     }
-    for(int i=0;i<STUDENTNUMBER;i++)
-    {
-        cout<<student[i].Number;
-        cout<<" "<<student[i].Name;
-        cout<<" "<<student[i].Sex;
-        cout<<" "<<student[i].College;
-        cout<<" "<<student[i].Sum;
-        cout<<endl;
-    }
+
     return 0;
 }
