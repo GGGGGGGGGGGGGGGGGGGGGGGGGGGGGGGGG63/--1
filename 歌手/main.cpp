@@ -4,13 +4,11 @@
 int main()
 {
     char *p;
-    char s[8]="hello! ";
-    int *q;
-    int a[2]={1819043176,2105711};
-    p=(char *)a;
-    q=(int *)s;
-    printf("%d    %d    ",*q,*(q+1));
+    p=(char *)malloc(4);
+    printf("%x\n",p);
+    strcpy(p, "hi");
+    printf("%x\n",p);
     printf("%s\n",p);
-    printf("%x  %x   %x\n",s,q,p);
+    free(p);
     return 0;
 }
