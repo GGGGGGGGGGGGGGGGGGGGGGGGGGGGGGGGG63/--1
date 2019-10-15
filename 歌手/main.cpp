@@ -11,5 +11,6 @@ int main()
     q=(int *)s;
     printf("%d    %d    ",*q,*(q+1));
     printf("%s\n",p);
+    printf("%x  %x   %x\n",s,q,p);
     return 0;
 }
