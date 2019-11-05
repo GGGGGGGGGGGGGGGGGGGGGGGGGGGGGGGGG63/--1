@@ -1,40 +1,56 @@
-
-#include <stdio.h>
-
-typedef enum {false, true} bool;
-#define MaxVertexNum 10  /* 最大顶点数设为10 */
-#define INFINITY 65535   /* ∞设为双字节无符号整数的最大值65535*/
-typedef int Vertex;      /* 用顶点下标表示顶点,为整型 */
-typedef int WeightType;  /* 边的权值设为整型 */
-
-typedef struct GNode *PtrToGNode;
-struct GNode{
-    int Nv;  /* 顶点数 */
-    int Ne;  /* 边数   */
-    WeightType G[MaxVertexNum][MaxVertexNum]; /* 邻接矩阵 */
-};
-typedef PtrToGNode MGraph; /* 以邻接矩阵存储的图类型 */
-bool Visited[MaxVertexNum]; /* 顶点的访问标记 */
-
-MGraph CreateGraph(); /* 创建图并且将Visited初始化为false；裁判实现，细节不表 */
-
-void Visit( Vertex V )
-{
-    printf(" %d", V);
-}
-
-void DFS( MGraph Graph, Vertex V, void (*Visit)(Vertex) );
-
-
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<map>
+#include<set>
+#include<queue>
+#include<stack>
+#include<vector>
+using namespace std;
+#define inf 0x3f3f3f3f
+#define LL long long
 int main()
 {
-    MGraph G;
-    Vertex V;
+    int n,i,j,x;
+    string ss;
+    stack<int> s;
+    vector<int> v;
+    vector<int>::iterator it;
+    cin>>n;
+    while(n--)
+    {
+        cin>>ss;
+        if(ss=="Pop")
+        {
+            if(s.empty())
+                cout<<"Invalid"<<endl;
+            else
+            {
+                cout<<s.top()<<endl;
+                it = lower_bound(v.begin(),v.end(),s.top());
+                v.erase(it);
+                s.pop();
+            }
+        }
+        else if(ss=="PeekMedian")
+        {
+            if(s.empty())
+                cout<<"Invalid"<<endl;
+            else
+            {
+                cout<<v[(s.size()-1)/2]<<endl;
+            }
+        }
+        else
+        {
+            cin>>x;
+            s.push(x);
+            it = lower_bound(v.begin(),v.end(),x);
+            v.insert(it,x);
+        }
+    }
     
-    G = CreateGraph();
-    scanf("%d", &V);
-    printf("DFS from %d:", V);
-    DFS(G, V, Visit);
-    
-    return 0;
 }
