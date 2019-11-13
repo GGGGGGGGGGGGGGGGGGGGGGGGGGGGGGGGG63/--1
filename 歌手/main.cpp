@@ -1,56 +1,57 @@
-#include<stdio.h>
-#include<string.h>
-#include<math.h>
-#include<iostream>
-#include<string>
-#include<algorithm>
-#include<map>
-#include<set>
-#include<queue>
-#include<stack>
-#include<vector>
-using namespace std;
-#define inf 0x3f3f3f3f
-#define LL long long
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef enum { false, true } bool;
+typedef int ElementType;
+typedef struct TNode *Position;
+typedef Position BinTree;
+struct TNode{
+    ElementType Data;
+    BinTree Left;
+    BinTree Right;
+};
+
+BinTree BuildTree(); /* 由裁判实现，细节不表 */
+bool IsBST ( BinTree T );
+
 int main()
 {
-    int n,i,j,x;
-    string ss;
-    stack<int> s;
-    vector<int> v;
-    vector<int>::iterator it;
-    cin>>n;
-    while(n--)
+    BinTree T;
+    
+    T = BuildTree();
+    if ( IsBST(T) ) printf("Yes\n");
+    else printf("No\n");
+    
+    return 0;
+}
+/* 你的代码将被嵌在这里 */
+bool IsBST ( BinTree T )
+{
+    BinTree T1=NULL,T2=NULL;
+    if(T == NULL)
+        return true;
+    else if(T->Left == NULL && T->Right == NULL)
+        return true;
+    T1=T->Left;
+    if(T1!=NULL)
     {
-        cin>>ss;
-        if(ss=="Pop")
+        while(T1->Right!=NULL)
         {
-            if(s.empty())
-                cout<<"Invalid"<<endl;
-            else
-            {
-                cout<<s.top()<<endl;
-                it = lower_bound(v.begin(),v.end(),s.top());
-                v.erase(it);
-                s.pop();
-            }
-        }
-        else if(ss=="PeekMedian")
-        {
-            if(s.empty())
-                cout<<"Invalid"<<endl;
-            else
-            {
-                cout<<v[(s.size()-1)/2]<<endl;
-            }
-        }
-        else
-        {
-            cin>>x;
-            s.push(x);
-            it = lower_bound(v.begin(),v.end(),x);
-            v.insert(it,x);
+            T1=T1->Right;
         }
     }
+    T2=T->Right;
+    if(T2!= NULL)
+    {
+        while(T2->Left!=NULL)
+        {
+            T2=T2->Left;
+        }
+    }
+    if(T1->Data<T->Data && T2->Data>T->Data)
+        return true;
+    else
+        return false;
     
 }
